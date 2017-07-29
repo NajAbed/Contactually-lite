@@ -39,3 +39,7 @@ group :development, :test do
   # Ensure consistent styling
   gem 'rubocop', require: false
 end
+
+gem 'tzinfo-data', '1.2017.2'
+gem 'carrierwave', '~> 0.9'
+gem 'bootstrap-sass', '~> 2.3.2'

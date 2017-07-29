@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  get 'resumes/index'
+
+  get 'resumes/new'
+
+  get 'resumes/create'
+
+  get 'resumes/destroy'
+
+  #CarrierWaveExample::Application.routes.draw do
+   resources :resumes, only: [:index, :new, :create, :destroy]
+   root "resumes#index"
+
+   #end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
