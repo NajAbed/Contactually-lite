@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @track.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @track.last_name %>
+</p>
+
+<p>
+  <strong>Email address:</strong>
+  <%= @track.email_address %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @track.phone_number %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @track.company_name %>
+</p>
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>

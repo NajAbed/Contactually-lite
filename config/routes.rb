@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tracks
   get 'resumes/index'
 
   get 'resumes/new'
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   get 'resumes/destroy'
 
   #CarrierWaveExample::Application.routes.draw do
+  resources :tracks
    resources :resumes, only: [:index, :new, :create, :destroy]
    root "resumes#index"
 

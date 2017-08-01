@@ -1,0 +1,598 @@
+  [1m[36m (257.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  select sqlite_version(*)
+  [1m[36m (94.0ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateResumes (20170729065606)
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (2.0ms)[0m  CREATE TABLE "resumes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "attachment" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20170729065606"]]
+  [1m[35m (96.1ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for ::1 at 2017-07-29 02:38:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (0.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (36.7ms)
+Completed 200 OK in 10451ms (Views: 10445.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/resumes.self-dd1e2b2c01aba92a847ab2fed7c116ca53a67fb50e56b1c58b913d3a1c813f47.css?body=1" for ::1 at 2017-07-29 02:38:53 -0500
+
+
+Started GET "/assets/resumes.self-19a187bec6cdb96d6de80a61c16c857c613536adf9138476bd367db38d282635.js?body=1" for ::1 at 2017-07-29 02:38:53 -0500
+
+
+Started GET "/resumes/new" for ::1 at 2017-07-29 02:39:00 -0500
+Processing by ResumesController#new as HTML
+  Rendered resumes/new.html.erb within layouts/application (111.2ms)
+Completed 200 OK in 206ms (Views: 200.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/resumes" for ::1 at 2017-07-29 02:39:30 -0500
+Processing by ResumesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mWTq3MNnR1fihmvi9y31MVP/j/PL91rhJb+UYaiRozYNkSXLByVTV04dzmW60gJcQU9F62WIaJXO1T2736KnfA==", "resume"=>{"name"=>"aa", "attachment"=>#<ActionDispatch::Http::UploadedFile:0x7efa4e8 @tempfile=#<Tempfile:C:/Users/najmeh/AppData/Local/Temp/RackMultipart20170729-11700-oez2a.csv>, @original_filename="data.csv", @content_type="application/vnd.ms-excel", @headers="Content-Disposition: form-data; name=\"resume[attachment]\"; filename=\"data.csv\"\r\nContent-Type: application/vnd.ms-excel\r\n">}, "commit"=>"Save"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "resumes" ("name", "attachment", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "aa"], ["attachment", "data.csv"], ["created_at", "2017-07-29 07:39:30.373741"], ["updated_at", "2017-07-29 07:39:30.373741"]]
+  [1m[36m (93.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/resumes
+Completed 302 Found in 140ms (ActiveRecord: 94.1ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-29 02:39:30 -0500
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (0.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 92ms (Views: 91.9ms | ActiveRecord: 0.0ms)
+
+
+Started DELETE "/resumes/1" for ::1 at 2017-07-29 02:39:57 -0500
+Processing by ResumesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"hBDSfzHlRHDhetEv7yvi5T+SCubcB4cA3RtUNkVI9wMQ5R1o9adQcE3hdKii1BWILSLA/nJ4tXQ2cf3sMnvzSQ==", "id"=>"1"}
+  [1m[36mResume Load (0.0ms)[0m  [1mSELECT  "resumes".* FROM "resumes" WHERE "resumes"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (1.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "resumes" WHERE "resumes"."id" = ?[0m  [["id", 1]]
+  [1m[35m (75.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/resumes
+Completed 302 Found in 134ms (ActiveRecord: 77.1ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-29 02:39:57 -0500
+Processing by ResumesController#index as HTML
+  [1m[36mResume Load (0.0ms)[0m  [1mSELECT "resumes".* FROM "resumes"[0m
+  Rendered resumes/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 87ms (Views: 87.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-29 02:41:59 -0500
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (0.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 96ms (Views: 88.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2017-07-31 21:58:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (1.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (53.0ms)
+Completed 200 OK in 14748ms (Views: 14731.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/resumes/new" for ::1 at 2017-07-31 21:59:20 -0500
+Processing by ResumesController#new as HTML
+  Rendered resumes/new.html.erb within layouts/application (332.2ms)
+Completed 200 OK in 436ms (Views: 428.4ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/resumes" for ::1 at 2017-07-31 21:59:34 -0500
+Processing by ResumesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w5+hn6C5QCJcT+5/IkPJNVAZSl9U9FRSTo/Vmd0XSONXam6IZPtUIvDUS/hvvD5YQqmAR/qLZial5XxDqiRMqQ==", "resume"=>{"name"=>"data", "attachment"=>#<ActionDispatch::Http::UploadedFile:0x9579af8 @tempfile=#<Tempfile:C:/Users/najmeh/AppData/Local/Temp/RackMultipart20170731-11392-1c9tdtr.csv>, @original_filename="data.csv", @content_type="application/vnd.ms-excel", @headers="Content-Disposition: form-data; name=\"resume[attachment]\"; filename=\"data.csv\"\r\nContent-Type: application/vnd.ms-excel\r\n">}, "commit"=>"Save"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  Rendered resumes/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 104ms (Views: 98.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/resumes" for ::1 at 2017-07-31 21:59:50 -0500
+Processing by ResumesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"WCKmCNoU7gqm9pnp/QEQjy7p94XmSChYkbWpwqrQQ4zM12kfHlb6CgptPG6w/ufiPFk9nUg3Gix63wAY3eNHxg==", "resume"=>{"name"=>"data", "attachment"=>#<ActionDispatch::Http::UploadedFile:0x93e6670 @tempfile=#<Tempfile:C:/Users/najmeh/AppData/Local/Temp/RackMultipart20170731-11392-1g6sx0c.doc>, @original_filename="Riverplace LEASE TERMINATION Najmeh Ab.doc", @content_type="application/msword", @headers="Content-Disposition: form-data; name=\"resume[attachment]\"; filename=\"Riverplace LEASE TERMINATION Najmeh Ab.doc\"\r\nContent-Type: application/msword\r\n">}, "commit"=>"Save"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "resumes" ("name", "attachment", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "data"], ["attachment", "Riverplace_LEASE_TERMINATION_Najmeh_Ab.doc"], ["created_at", "2017-08-01 02:59:50.658224"], ["updated_at", "2017-08-01 02:59:50.658224"]]
+  [1m[36m (156.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/resumes
+Completed 302 Found in 412ms (ActiveRecord: 157.5ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-31 21:59:50 -0500
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (0.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 77ms (Views: 77.4ms | ActiveRecord: 0.0ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTracks (20170801030844)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (12.0ms)[0m  [1mCREATE TABLE "tracks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email_address" varchar, "phone_number" float, "company_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (1.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTracks (20170801030844)
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36m (1.0ms)[0m  [1mCREATE TABLE "tracks" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email_address" varchar, "phone_number" float, "company_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20170801030844"]]
+  [1m[36m (77.9ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+
+
+Started GET "/" for ::1 at 2017-07-31 22:15:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (0.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 9448ms (Views: 9442.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.self-41c6d9d41bfb608a6653fab5435299d01a520a3f87ec5a49d28a02f2fc580b18.css?body=1" for ::1 at 2017-07-31 22:16:21 -0500
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 22:16:35 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 108ms (Views: 105.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/new" for ::1 at 2017-07-31 22:16:39 -0500
+Processing by TracksController#new as HTML
+  Rendered tracks/_form.html.erb (32.0ms)
+  Rendered tracks/new.html.erb within layouts/application (57.4ms)
+Completed 200 OK in 152ms (Views: 146.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tracks" for ::1 at 2017-07-31 22:16:57 -0500
+Processing by TracksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JTvHQQJj/Ok5IEY7h3fKd8lcz1igjnpbA7N7iMqWu5exzghWxiHo6ZW747zKiD0a2+wFQA7xSC/o2dJSvaW/3Q==", "track"=>{"first_name"=>"aa", "last_name"=>"fff", "email_address"=>"khgf", "phone_number"=>"765567", "company_name"=>"hgh"}, "commit"=>"Create Track"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "tracks" ("first_name", "last_name", "email_address", "phone_number", "company_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "aa"], ["last_name", "fff"], ["email_address", "khgf"], ["phone_number", 765567.0], ["company_name", "hgh"], ["created_at", "2017-08-01 03:16:57.272255"], ["updated_at", "2017-08-01 03:16:57.272255"]]
+  [1m[35m (198.5ms)[0m  commit transaction
+Redirected to http://localhost:3000/tracks/1
+Completed 302 Found in 207ms (ActiveRecord: 199.5ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 22:16:57 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 153ms (Views: 85.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 22:17:13 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 94ms (Views: 93.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/new" for ::1 at 2017-07-31 22:17:16 -0500
+Processing by TracksController#new as HTML
+  Rendered tracks/_form.html.erb (2.0ms)
+  Rendered tracks/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 116ms (Views: 115.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tracks" for ::1 at 2017-07-31 22:17:27 -0500
+Processing by TracksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vu2ley18qn5GnKgOaP0LKD6rlir+PzWJfaLePCeCnmcqGGps6T6+fuoHDYklAvxFLBtcMlBAB/2WyHfmULGaLQ==", "track"=>{"first_name"=>"ggg", "last_name"=>"jjug", "email_address"=>"jkjuhy", "phone_number"=>"87678", "company_name"=>"hghj"}, "commit"=>"Create Track"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "tracks" ("first_name", "last_name", "email_address", "phone_number", "company_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["first_name", "ggg"], ["last_name", "jjug"], ["email_address", "jkjuhy"], ["phone_number", 87678.0], ["company_name", "hghj"], ["created_at", "2017-08-01 03:17:27.048634"], ["updated_at", "2017-08-01 03:17:27.048634"]]
+  [1m[36m (180.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tracks/2
+Completed 302 Found in 187ms (ActiveRecord: 181.4ms)
+
+
+Started GET "/tracks/2" for ::1 at 2017-07-31 22:17:27 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTrack Load (0.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 87ms (Views: 84.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 22:17:33 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 84ms (Views: 83.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 22:17:37 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTrack Load (0.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 89ms (Views: 88.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 22:17:40 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 90ms (Views: 90.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1/edit" for ::1 at 2017-07-31 22:17:42 -0500
+Processing by TracksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTrack Load (0.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered tracks/_form.html.erb (2.0ms)
+  Rendered tracks/edit.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 120ms (Views: 118.6ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/tracks/1" for ::1 at 2017-07-31 22:17:49 -0500
+Processing by TracksController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xbvmCv3oWt36lNU6uDExM8d3gdt6FWnP+0fr9OgzM69RTikdOapO3VYPcL31zsZe1cdLw9RqW7sQLUIunwA35Q==", "track"=>{"first_name"=>"aaa", "last_name"=>"fff", "email_address"=>"khgf", "phone_number"=>"765567.0", "company_name"=>"hgh"}, "commit"=>"Update Track", "id"=>"1"}
+  [1m[36mTrack Load (1.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mUPDATE "tracks" SET "first_name" = ?, "updated_at" = ? WHERE "tracks"."id" = ?[0m  [["first_name", "aaa"], ["updated_at", "2017-08-01 03:17:49.592193"], ["id", 1]]
+  [1m[35m (150.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/tracks/1
+Completed 302 Found in 162ms (ActiveRecord: 152.9ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 22:17:49 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 86ms (Views: 84.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 22:17:53 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 92ms (Views: 91.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 22:17:56 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 88ms (Views: 86.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 22:17:59 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 86ms (Views: 86.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:00:17 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 123ms (Views: 123.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-07-31 23:00:25 -0500
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (1.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 89ms (Views: 87.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:00:33 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 96ms (Views: 96.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 23:00:37 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTrack Load (1.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 85ms (Views: 83.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:00:39 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 100ms (Views: 99.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/2" for ::1 at 2017-07-31 23:00:42 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mTrack Load (1.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 95ms (Views: 92.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:00:45 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 90ms (Views: 89.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/new" for ::1 at 2017-07-31 23:00:47 -0500
+Processing by TracksController#new as HTML
+  Rendered tracks/_form.html.erb (3.0ms)
+  Rendered tracks/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 112ms (Views: 112.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tracks" for ::1 at 2017-07-31 23:00:58 -0500
+Processing by TracksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"sWsvKdgzn/igIWXJ+s3aZZMCjfHCkYoynqAR2RGAvcAlnuA+HHGL+Ay6wE63Mi0IgbJH6WzuuEZ1yrgDZrO5ig==", "track"=>{"first_name"=>"qqq", "last_name"=>"aaa", "email_address"=>"gggf", "phone_number"=>"7643", "company_name"=>"jhgfd"}, "commit"=>"Create Track"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "tracks" ("first_name", "last_name", "email_address", "phone_number", "company_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "qqq"], ["last_name", "aaa"], ["email_address", "gggf"], ["phone_number", 7643.0], ["company_name", "jhgfd"], ["created_at", "2017-08-01 04:00:58.930901"], ["updated_at", "2017-08-01 04:00:58.930901"]]
+  [1m[35m (179.1ms)[0m  commit transaction
+Redirected to http://localhost:3000/tracks/3
+Completed 302 Found in 184ms (ActiveRecord: 180.1ms)
+
+
+Started GET "/tracks/3" for ::1 at 2017-07-31 23:00:59 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 3]]
+  Rendered tracks/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 97ms (Views: 95.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:01:01 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 127ms (Views: 126.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 23:01:05 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 97ms (Views: 94.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1/edit" for ::1 at 2017-07-31 23:01:08 -0500
+Processing by TracksController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTrack Load (0.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered tracks/_form.html.erb (2.0ms)
+  Rendered tracks/edit.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 102ms (Views: 100.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 23:01:13 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 91ms (Views: 88.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:01:16 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 92ms (Views: 92.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-07-31 23:10:58 -0500
+Processing by ResumesController#index as HTML
+  [1m[36mResume Load (0.0ms)[0m  [1mSELECT "resumes".* FROM "resumes"[0m
+  Rendered resumes/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 95ms (Views: 90.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:11:03 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 93ms (Views: 90.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 23:11:07 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 96ms (Views: 93.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:11:09 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 84ms (Views: 83.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/2" for ::1 at 2017-07-31 23:11:12 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mTrack Load (1.0ms)[0m  [1mSELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1[0m  [["id", 2]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 85ms (Views: 83.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:11:14 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 89ms (Views: 89.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/new" for ::1 at 2017-07-31 23:11:16 -0500
+Processing by TracksController#new as HTML
+  Rendered tracks/_form.html.erb (3.0ms)
+  Rendered tracks/new.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 99ms (Views: 99.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tracks" for ::1 at 2017-07-31 23:11:25 -0500
+Processing by TracksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"GgRObClcFt68mWAWDP6+7k9zh4MQ5wOVIk5qxtRlYCWO8YF77R4C3hACxZFBAUmDXcNNm76YMeHJJMMco1Zkbw==", "track"=>{"first_name"=>"xfdv", "last_name"=>"fesa", "email_address"=>"vafrs", "phone_number"=>"87876", "company_name"=>"gfhj"}, "commit"=>"Create Track"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "tracks" ("first_name", "last_name", "email_address", "phone_number", "company_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["first_name", "xfdv"], ["last_name", "fesa"], ["email_address", "vafrs"], ["phone_number", 87876.0], ["company_name", "gfhj"], ["created_at", "2017-08-01 04:11:25.435551"], ["updated_at", "2017-08-01 04:11:25.435551"]]
+  [1m[36m (159.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tracks/4
+Completed 302 Found in 173ms (ActiveRecord: 165.1ms)
+
+
+Started GET "/tracks/4" for ::1 at 2017-07-31 23:11:25 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mTrack Load (1.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 4]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 94ms (Views: 93.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:11:27 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (1.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 97ms (Views: 95.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:13:24 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 98ms (Views: 95.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/new" for ::1 at 2017-07-31 23:13:27 -0500
+Processing by TracksController#new as HTML
+  Rendered tracks/_form.html.erb (2.0ms)
+  Rendered tracks/new.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 97ms (Views: 96.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tracks" for ::1 at 2017-07-31 23:13:35 -0500
+Processing by TracksController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w82eEecVD+Tx0Nx4s0xb3MAV3POGGl+NRRVdrbd5yuNXOFEGI1cb5F1Lef/+s6yx0qUW6yhlbfmuf/R3wErOqQ==", "track"=>{"first_name"=>"edbgf", "last_name"=>"dfsw", "email_address"=>"DFD", "phone_number"=>"5467", "company_name"=>"HG"}, "commit"=>"Create Track"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "tracks" ("first_name", "last_name", "email_address", "phone_number", "company_name", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["first_name", "edbgf"], ["last_name", "dfsw"], ["email_address", "DFD"], ["phone_number", 5467.0], ["company_name", "HG"], ["created_at", "2017-08-01 04:13:35.767908"], ["updated_at", "2017-08-01 04:13:35.767908"]]
+  [1m[36m (160.1ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/tracks/5
+Completed 302 Found in 168ms (ActiveRecord: 161.1ms)
+
+
+Started GET "/tracks/5" for ::1 at 2017-07-31 23:13:35 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mTrack Load (0.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 5]]
+  Rendered tracks/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 82ms (Views: 80.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:13:37 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 90ms (Views: 89.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks/1" for ::1 at 2017-07-31 23:13:40 -0500
+Processing by TracksController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mTrack Load (0.0ms)[0m  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."id" = ? LIMIT 1  [["id", 1]]
+  Rendered tracks/show.html.erb within layouts/application (0.0ms)
+Completed 200 OK in 89ms (Views: 87.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:13:42 -0500
+Processing by TracksController#index as HTML
+  [1m[36mTrack Load (0.0ms)[0m  [1mSELECT "tracks".* FROM "tracks"[0m
+  Rendered tracks/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 98ms (Views: 97.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-07-31 23:46:25 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (0.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 446ms (Views: 440.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/resumes/new" for ::1 at 2017-07-31 23:46:41 -0500
+Processing by ResumesController#new as HTML
+  Rendered resumes/new.html.erb within layouts/application (37.0ms)
+Completed 200 OK in 137ms (Views: 136.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/resumes" for ::1 at 2017-07-31 23:46:53 -0500
+Processing by ResumesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"b17mf8q5+3i4MeuVI/kJ2Bn+n3ZKr3ynKbO+FsUQJLD7qyloDvvveBSqThJuBv61C05VbuTQTtPC2RfMsiMg+g==", "resume"=>{"name"=>"se", "attachment"=>#<ActionDispatch::Http::UploadedFile:0x82407c0 @tempfile=#<Tempfile:C:/Users/najmeh/AppData/Local/Temp/RackMultipart20170731-15132-aut2rp.DOCX>, @original_filename="SDE.DOCX", @content_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document", @headers="Content-Disposition: form-data; name=\"resume[attachment]\"; filename=\"SDE.DOCX\"\r\nContent-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document\r\n">}, "commit"=>"Save"}
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "resumes" ("name", "attachment", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["name", "se"], ["attachment", "SDE.DOCX"], ["created_at", "2017-08-01 04:46:53.947500"], ["updated_at", "2017-08-01 04:46:53.947500"]]
+  [1m[36m (174.3ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/resumes
+Completed 302 Found in 205ms (ActiveRecord: 175.3ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-31 23:46:54 -0500
+Processing by ResumesController#index as HTML
+  [1m[35mResume Load (1.0ms)[0m  SELECT "resumes".* FROM "resumes"
+  Rendered resumes/index.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 127ms (Views: 126.5ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/resumes/2" for ::1 at 2017-07-31 23:46:58 -0500
+Processing by ResumesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"LQiCuA6cFYsVFHdVdbOxpiLw4ZX4qbJc+Kv3GzsGN0e5/U2vyt4Bi7mP0tI4TEbLMEArjVbWgCgTwV7BTDUzDQ==", "id"=>"2"}
+  [1m[36mResume Load (0.0ms)[0m  [1mSELECT  "resumes".* FROM "resumes" WHERE "resumes"."id" = ? LIMIT 1[0m  [["id", 2]]
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "resumes" WHERE "resumes"."id" = ?[0m  [["id", 2]]
+  [1m[35m (180.6ms)[0m  commit transaction
+Redirected to http://localhost:3000/resumes
+Completed 302 Found in 213ms (ActiveRecord: 181.6ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-31 23:46:58 -0500
+Processing by ResumesController#index as HTML
+  [1m[36mResume Load (0.0ms)[0m  [1mSELECT "resumes".* FROM "resumes"[0m
+  Rendered resumes/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 114ms (Views: 114.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/resumes/new" for ::1 at 2017-07-31 23:47:03 -0500
+Processing by ResumesController#new as HTML
+  Rendered resumes/new.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 107ms (Views: 106.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/resumes" for ::1 at 2017-07-31 23:47:14 -0500
+Processing by ResumesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hQGEuRPBFxVdKLffLzb0sQVHWfOouVcvxAWxqAV9L84R9Euu14MDFfGzElhiyQPcF/eT6wbGZVsvbxhyck4rhA==", "resume"=>{"name"=>"o", "attachment"=>#<ActionDispatch::Http::UploadedFile:0x8291d78 @tempfile=#<Tempfile:C:/Users/najmeh/AppData/Local/Temp/RackMultipart20170731-15132-1u6oe9.pdf>, @original_filename="OPT Reporting Form.pdf", @content_type="application/pdf", @headers="Content-Disposition: form-data; name=\"resume[attachment]\"; filename=\"OPT Reporting Form.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Save"}
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "resumes" ("name", "attachment", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "o"], ["attachment", "OPT_Reporting_Form.pdf"], ["created_at", "2017-08-01 04:47:14.565306"], ["updated_at", "2017-08-01 04:47:14.565306"]]
+  [1m[35m (148.9ms)[0m  commit transaction
+Redirected to http://localhost:3000/resumes
+Completed 302 Found in 186ms (ActiveRecord: 149.9ms)
+
+
+Started GET "/resumes" for ::1 at 2017-07-31 23:47:14 -0500
+Processing by ResumesController#index as HTML
+  [1m[36mResume Load (0.0ms)[0m  [1mSELECT "resumes".* FROM "resumes"[0m
+  Rendered resumes/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 90ms (Views: 90.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tracks" for ::1 at 2017-07-31 23:47:30 -0500
+Processing by TracksController#index as HTML
+  [1m[35mTrack Load (0.0ms)[0m  SELECT "tracks".* FROM "tracks"
+  Rendered tracks/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 107ms (Views: 102.2ms | ActiveRecord: 1.0ms)
