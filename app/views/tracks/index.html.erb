@@ -30,7 +30,18 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
 
-<%= link_to 'New Track', new_track_path %>
+<p><%= link_to 'New Track', new_track_path %></p><br>
+<p><%= text_field_tag :search, params[:first_name] %>
+<%= submit_tag "Search", :name => nil %>
+</p><br>
+<p><%= link_to "Upload", new_resume_path, class: "btn btn-primary" %></p>
+<br>
+<p><%= link_to 'Email Address with .com', {controller: 'tracks', action: 'index', :email_address => '.com'}  %></p><br>
+
+
+
+ 
+
+

@@ -1,10 +1,19 @@
 class TracksController < ApplicationController
   before_action :set_track, only: [:show, :edit, :update, :destroy]
-
+  #has_scope :first_name
   # GET /tracks
   # GET /tracks.json
+#   def next
+#      @tracks = Track.all
+#   Track.where(["email_address > ?", email_address]).first
+# end
   def index
     @tracks = Track.all
+   #@products = Product.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    @tracks = Track.filter(params.slice(:first_name, :last_name, :email_address))
+    #@tracks = Track.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page => params[:page])
+
+
   end
 
   # GET /tracks/1
